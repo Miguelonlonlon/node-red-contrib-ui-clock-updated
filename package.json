@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-ui-clock",
-	"description": "An analog clock for the Node-RED Dashboard.",
+	"description": "A project to try to add improvements and new features to the original analog clock for the Node-RED Dashboard.",
 	"keywords": [
 		"clock",
 		"dashboard",
@@ -14,12 +14,18 @@
 		"name": "Patrick Knabe",
 		"email": "patrickknabe@gmail.com"
 	},
+	"contributors": [
+		{
+			"name": "MigueLOnLOn",
+			"email": "botbotones@protonmail.com"
+		}
+	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/patrickknabe/node-red-contrib-ui-clock.git"
+		"url": "git+https://github.com/Miguelonlonlon/node-red-contrib-ui-clock-updated.git"
 	},
 	"bugs": {
-		"url": "https://github.com/patrickknabe/node-red-contrib-ui-clock/issues"
+		"url": "https://github.com/Miguelonlonlon/node-red-contrib-ui-clock-updated/issues"
 	},
 	"homepage": "https://github.com/patrickknabe/node-red-contrib-ui-clock#readme",
 	"peerDependencies": {

@@ -15,7 +15,10 @@ module.exports = RED => {
 				node: this,
 				format: `
 					<svg version="1.1" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-						<g style="fill: var( --nr-dashboard-pageTitlebarBackgroundColor );">
+						<g style="fill: ${config.backgroundColor}">
+							<circle cx="500" cy="500" r="500" />
+						</g>
+						<g style="fill: ${config.dotsColor}">
 							<circle cx="500" cy="25" r="25" />
 							<circle cx="737.5" cy="88.638" r="25" />
 							<circle cx="911.36" cy="262.5" r="25" />
@@ -29,11 +32,11 @@ module.exports = RED => {
 							<circle cx="88.638" cy="262.5" r="25" />
 							<circle cx="262.5" cy="88.638" r="25" />
 						</g>
-						<g style="stroke: var( --nr-dashboard-widgetTextColor );">
+						<g style="stroke: ${config.hourminColor}">
 							<line id="ui_clock_{{ $id }}_h" x1="500" y1="500" x2="500" y2="200" stroke-linecap="round" stroke-width="30" />
 							<line id="ui_clock_{{ $id }}_m" x1="500" y1="500" x2="500" y2="75" stroke-linecap="round" stroke-width="20" />
 						</g>
-						<g style="stroke: var( --nr-dashboard-groupTextColor );">
+						<g style="stroke: ${config.secsColor}">
 							<line id="ui_clock_{{ $id }}_s" x1="500" y1="500" x2="500" y2="25" stroke-linecap="round" stroke-width="10" />
 						</g>
 					</svg>

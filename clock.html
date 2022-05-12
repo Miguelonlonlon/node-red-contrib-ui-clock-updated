@@ -9,28 +9,34 @@
 		icon: 'font-awesome/fa-clock-o',
 		align: 'right',
 		defaults: {
-			name: { value: '' },
-			group: { type: 'ui_group', required: true },
-			order: { value: 0 },
-			width: { value: 0, validate: function( width ) {
-				const group = RED.nodes.node( $( '#node-input-group' ).val() || this.group );
-				const valid = !group || +width <= +group.width;
-
-				$( '#node-input-size' ).toggleClass( 'input-error', !valid );
-
-				return valid;
-			} },
-			height: { value: 0 }
+            group: {type: 'ui_group', required:true},
+            name: {value: ''},
+            order: {value: 0},
+            width: {
+                value: 0,
+                validate: function(v) {
+                    var valid = true
+                    var width = v||0;
+                    var currentGroup = $('#node-input-group').val()|| this.group;
+                    var groupNode = RED.nodes.node(currentGroup);
+                    valid = !groupNode || +width <= +groupNode.width;
+                    $("#node-input-size").toggleClass("input-error",!valid);
+                    return valid;
+                }},
+            height: {value: 0},
+			backgroundColor: {value: '#ffffff00'},
+			dotsColor: {value: '#659ad2'},
+			hourminColor: {value: '#000000'},
+			secsColor: {value: '#0094ce'},
+            className: {value: ''},
 		},
-		label: function() {
-			return this.name || 'clock';
-		},
-		oneditprepare: () => {
-			$( '#node-input-size' ).elementSizer( {
-				width: "#node-input-width",
-				height: "#node-input-height",
-				group: "#node-input-group"
-			} );
+        label: function() { return this.name || "clock"; },
+        oneditprepare: function() {
+            $("#node-input-size").elementSizer({
+                width: "#node-input-width",
+                height: "#node-input-height",
+                group: "#node-input-group"
+            });
 		}
 	} );
 
@@ -46,12 +52,36 @@
 		<label><i class="fa fa-fw fa-table"></i> Group</label>
 		<input type="text" id="node-input-group" />
 	</div>
-	<div class="form-row" id="template-row-size">
+    <div class="form-row" id="template-row-size">
 		<label><i class="fa fa-fw fa-object-group"></i> Size</label>
-		<input type="hidden" id="node-input-width" />
-		<input type="hidden" id="node-input-height" />
-		<button id="node-input-size" class="editor-button"></button>
-	</div>
+        <input type="hidden" id="node-input-width">
+        <input type="hidden" id="node-input-height">
+        <button class="editor-button" id="node-input-size"></button>
+    </div>
+    <div class="form-row">
+        <div class="form-col" style="display:inline-block">
+            <label for="node-input-backgroundColor"><i class="fa fa-tint"></i> Background Color</label>
+            <input type="color" id="node-input-backgroundColor" style="width: 50%">
+        </div>
+        <div class="form-col" style="display:inline-block">
+            <label for="node-input-dotsColor"><i class="fa fa-tint"></i> Dots Color</label>
+            <input type="color" id="node-input-dotsColor" style="width: 50%">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-col" style="display:inline-block">
+            <label for="node-input-hourminColor"><i class="fa fa-tint"></i> Hour and minutes Hand Color</label>
+            <input type="color" id="node-input-hourminColor" style="width: 50%">
+        </div>
+        <div class="form-col" style="display:inline-block">
+            <label for="node-input-secsColor"><i class="fa fa-tint"></i> Seconds Hand Color</label>
+            <input type="color" id="node-input-secsColor" style="width: 50%">
+        </div>
+    </div>
+	<div class="form-row">
+        <label for="node-input-className"><i class="fa fa-code"></i>  Class names</label>
+        <input type="text" id="node-input-className" placeholder="Alternative class names for clock parent container."/>
+    </div>
 </script>
 
 <script type="text/html" data-help-name="ui_clock">
